@@ -1,0 +1,1 @@
+// Clean footer with direct links and professional profile badges.

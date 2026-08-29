@@ -1,0 +1,1 @@
+// Fixed top navigation with smooth scrolling anchors (#about, #projects, #skills, #contact) and a mobile responsive menu toggle.

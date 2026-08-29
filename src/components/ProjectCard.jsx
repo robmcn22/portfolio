@@ -1,0 +1,1 @@
+// A grid layout mapping through a centralized JSON data file containing your project metadata, tech stack badges, and links.
