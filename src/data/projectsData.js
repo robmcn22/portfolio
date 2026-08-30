@@ -4,7 +4,7 @@ export const projects = [
     id: 1,
     title: "Titanic Kaggle Challenge (WIP)",
     description: "Predictive model forecasting survival outcomes for passengers on the Titanic.",
-    techStack: ["Python", "Pandas", "#", "#"],
+    techStack: ["Python", "Pandas", "ML Modeling", "#"],
     github: "#",
     live: "#"
   },
