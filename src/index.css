@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 /**
 Example of a custom theme configuration for Tailwind CSS. This allows you to define your own color palette, 
 typography, and other design tokens that can be used throughout your application.

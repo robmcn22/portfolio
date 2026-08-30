@@ -1,17 +1,21 @@
-import Hero from "./components/Hero";
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
+import Contact from './components/Contact';
 
 function App() {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-800">
-      <Hero />
-
-      <div className="min-h-screen bg-slate-900 text-white p-8 flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold text-cyan-400 mb-2">
-          Portfolio Setup Complete
-        </h1>
-        <p className="text-slate-400">Tailwind CSS test.</p>
-      </div>
-    </main>
+    <div className="min-h-screen bg-white font-sans selection:bg-blue-200">
+      <Navbar />
+      <main>
+        <Hero />
+        <Projects />
+        <Skills />
+      </main>
+      <Contact />
+    </div>
   );
 }
 
