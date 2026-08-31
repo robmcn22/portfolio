@@ -1,34 +1,50 @@
+import score1 from "../assets/1score.PNG";
+
+import tutorialModel from "../assets/tutorial model.PNG";
+
 export const projects = [
-    // Example project data structure. Add your own projects here.
   {
     id: 1,
     title: "Titanic Kaggle Challenge (WIP)",
+    layoutType: "linear",
     description: "Predictive model forecasting survival outcomes for passengers on the Titanic.",
     techStack: ["Python"],
     github: "https://github.com/robmcn22/portfolio",
     live: "#",
-    // Full process page stages
     stages: [
-      { id: "overview", title: "Project Overview", content: "Detailed explanation of the Titanic dataset and the goal of predicting survival rates." },
-      { id: "1", title: "1: Baseline Model & Score: Tutorial", 
-        content: "" },
-      // { id: "modeling", title: "Model Selection", content: "Testing Random Forest, Logistic Regression, and XGBoost. Hyperparameter tuning details." },
-      // { id: "results", title: "Results & Deployment", content: "Final accuracy metrics and feature importance analysis." }
+      { 
+        id: "overview", 
+        title: "1. Project Overview", 
+        content: "The Challenge: Use the provided Titanic passenger data \
+        (cabin, age, price of ticket, etc.) to try to predict who survied and who did not on the Titanic.",
+        //codeSnippet: "import pandas as pd\ndf = pd.read_csv('train.csv')"
+      },
+      { 
+        id: "baseline", 
+        title: "2. Baseline Model & Score: Tutorial", 
+        content: "Using the provided model to get a baseline score. This is the score to beat",
+        images: [score1, tutorialModel]
+      }
     ]
   },
-  {
-    id: 2,
-    title: "Liverpool Analysis Dashboard (SOON)",
-    description: "Interactive dashboard for analyzing Liverpool's performance in the Premier League.",
-    techStack: [""],
-    github: "#",
-    live: "#",
-    // Full process page stages: UPDATE
-    stages: [
-      // { id: "overview", title: "Project Overview", content: "Detailed explanation of the Titanic dataset and the goal of predicting survival rates." },
-      // { id: "preprocessing", title: "Data Preprocessing", content: "How missing values were handled, feature engineering (e.g., extracting titles from names), and encoding categorical variables." },
-      // { id: "modeling", title: "Model Selection", content: "Testing Random Forest, Logistic Regression, and XGBoost. Hyperparameter tuning details." },
-      // { id: "results", title: "Results & Deployment", content: "Final accuracy metrics and feature importance analysis." }
-    ]
-  }
+  // {
+  //   id: 2,
+  //   title: "Liverpool Analysis Dashboard",
+  //   layoutType: "dashboard",
+  //   description: "Interactive performance analysis dashboard.",
+  //   techStack: ["#"],
+  //   github: "#",
+  //   live: "#",
+  //   dashboardData: {
+  //     kpis: [
+  //       { label: "Expected Goals (xG)", value: "2.14 / match" },
+  //       { label: "Win Rate", value: "68.4%" },
+  //       { label: "High Press Success", value: "41.2%" }
+  //     ],
+  //     tabs: [
+  //       { id: "attack", label: "Attacking Metrics", content: "Interactive xG breakdown chart here." },
+  //       { id: "defense", label: "Defensive Pressing", content: "Heatmap visualization components here." }
+  //     ]
+  //   }
+  // }
 ];
