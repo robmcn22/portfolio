@@ -1,6 +1,7 @@
 // A grid layout mapping through a centralized JSON data file containing your project metadata, tech stack badges, and links.
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Code, ExternalLink } from 'lucide-react';
 
 export default function ProjectCard({ project }) {
@@ -18,12 +19,14 @@ export default function ProjectCard({ project }) {
       </div>
       
       <div className="flex space-x-4 text-sm font-medium">
-        <a href={project.github} className="flex items-center text-gray-600 hover:text-gray-900">
-          {/*<Code size={16} className="mr-1" /> Code*/}
-        </a>
-        <a href={project.live} className="flex items-center text-blue-600 hover:text-blue-800">
-          {/*<ExternalLink size={16} className="mr-1" /> Live Demo*/}
-        </a>
+        {/* Changed from an <a> tag to a React Router <Link> */}
+        <Link to={`/project/${project.id}`} className="flex items-center text-gray-600 hover:text-gray-900">
+          <Code size={16} className="mr-1" /> View Full Process
+        </Link>
+        
+        {/* <a href={project.live} className="flex items-center text-blue-600 hover:text-blue-800">
+          <ExternalLink size={16} className="mr-1" /> Live Demo
+        </a> */}
       </div>
     </div>
   );
