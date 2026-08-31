@@ -34,10 +34,8 @@ export default function ProjectDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* 1. Reuse the global Navbar */}
-      <Navbar />
 
-      <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-12 w-full flex-grow">
+      <div className="max-w-7xl mx-auto py-10 flex flex-col md:flex-row gap-12 w-full flex-grow">
         
         {/* Interactive Sidebar */}
         <aside className="w-full md:w-64 shrink-0">
@@ -63,7 +61,7 @@ export default function ProjectDetail() {
         </aside>
 
         {/* Main Content Area */}
-        <main className="flex-grow max-w-3xl bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
+        <main className="flex-grow max-w-4xl bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
           
           {/* 2. Centralized Back Button */}
           <div className="mb-10">
@@ -105,7 +103,7 @@ export default function ProjectDetail() {
                 <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
                   {stage.title}
                 </h2>
-                <p className="text-gray-700 leading-relaxed text-lg">
+                <p className="text-gray-700 leading-relaxed text-lg mb-15">
                   {stage.content}
                 </p>
               </section>

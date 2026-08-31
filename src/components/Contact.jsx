@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Contact() {
   return (
-    <footer id="contact" className="bg-gray-900 text-white py-12">
+    <footer id="contact" className="bg-gray-900 text-white py-30">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <h2 className="text-2xl font-bold mb-4">Let's Connect</h2>
         <p className="text-gray-400 mb-6 max-w-xl mx-auto">

@@ -5,7 +5,7 @@ import React from 'react';
 
 export default function Hero() {
   return (
-    <section id="about" className="max-w-5xl mx-auto px-6 py-24 flex flex-col justify-center min-h-[50vh]">
+    <section id="about" className="max-w-5xl mx-auto px-6 py-40 flex flex-col justify-center min-h-[50vh]">
       <h1 className="text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
         Data Scientist & ML Engineer
       </h1>
