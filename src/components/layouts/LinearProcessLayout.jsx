@@ -3,6 +3,42 @@ import React, { useState, useEffect } from "react";
 export default function LinearProcessLayout({ stages }) {
   const [activeSection, setActiveSection] = useState("");
 
+  const renderContent = (content) => {
+    if (Array.isArray(content)) {
+      return (
+        <div className="text-gray-700 leading-relaxed text-lg mb-4">
+          {content.map((part, index) => {
+            if (part.type === "bold") {
+              return (
+                <strong key={`content-${index}`} className="font-bold">
+                  {part.text}
+                </strong>
+              );
+            }
+
+            if (part.type === "break") {
+              return <br key={`content-${index}`} />;
+            }
+
+            if (part.type === "list") {
+              return (
+                <ul key={`content-${index}`} className="list-disc pl-6 my-3">
+                  {part.items.map((item, itemIndex) => (
+                    <li key={`list-${itemIndex}`}>{item}</li>
+                  ))}
+                </ul>
+              );
+            }
+
+            return <React.Fragment key={`content-${index}`}>{part.text}</React.Fragment>;
+          })}
+        </div>
+      );
+    }
+
+    return <p className="text-gray-700 leading-relaxed text-lg mb-4">{content}</p>;
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -52,35 +88,50 @@ export default function LinearProcessLayout({ stages }) {
 
       {/* Article / Step-by-Step Content */}
       <main className="grow max-w-5xl bg-white p-8 md:p-10 rounded-xl shadow-sm border border-gray-100 space-y-16">
-        {stages.map((stage) => (
-          <section id={stage.id} key={stage.id} className="scroll-mt-24">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
-              {stage.title}
-            </h2>
-            <p className="text-gray-700 leading-relaxed text-lg mb-4">
-              {stage.content}
-            </p>
-            {stage.images?.map((image, index) => {
-              const imageData =
-                typeof image === "string" ? { src: image, description: "" } : image;
+        {stages.map((stage) => {
+          const blocks = stage.blocks ?? [
+            ...(stage.content || stage.images ? [{ type: "text", content: stage.content }] : []),
+            ...(stage.images ?? []).map((image) => ({ type: "image", ...image }))
+          ];
 
-              return (
-                <figure key={`${stage.id}-${index}`} className="my-4">
-                  <img
-                    src={imageData.src}
-                    alt={imageData.alt || `${stage.title} ${index + 1}`}
-                    className="w-full rounded-lg border border-gray-200 shadow-sm"
-                  />
-                  {imageData.description && (
-                    <figcaption className="mt-2 text-sm text-gray-600 italic">
-                      {imageData.description}
-                    </figcaption>
-                  )}
-                </figure>
-              );
-            })}
-          </section>
-        ))}
+          return (
+            <section id={stage.id} key={stage.id} className="scroll-mt-24 mb-20">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
+                {stage.title}
+              </h2>
+
+              {blocks.map((block, index) => {
+                if (block.type === "text") {
+                  return <React.Fragment key={`${stage.id}-block-${index}`}>{renderContent(block.content)}</React.Fragment>;
+                }
+
+                if (block.type === "image") {
+                  const imageData =
+                    typeof block === "string"
+                      ? { src: block, description: "" }
+                      : block;
+
+                  return (
+                    <figure key={`${stage.id}-block-${index}`} className="my-4">
+                      <img
+                        src={imageData.src}
+                        alt={imageData.alt || `${stage.title} ${index + 1}`}
+                        className="w-full rounded-lg border border-gray-200 shadow-sm"
+                      />
+                      {imageData.description && (
+                        <figcaption className="mt-2 text-sm text-gray-600 italic">
+                          {imageData.description}
+                        </figcaption>
+                      )}
+                    </figure>
+                  );
+                }
+
+                return null;
+              })}
+            </section>
+          );
+        })}
       </main>
     </div>
   );

@@ -1,11 +1,11 @@
 import score1 from "../assets/1score.PNG";
 
-import tutorialModel from "../assets/tutorial model.PNG";
+import tutorial from "../assets/tutorial model.PNG";
 
 export const projects = [
   {
     id: 1,
-    title: "Titanic Kaggle Challenge (WIP)",
+    title: "Kaggle Competition - Titanic (WIP)",
     layoutType: "linear",
     description: "Predictive model forecasting survival outcomes for passengers on the Titanic.",
     techStack: ["Python"],
@@ -15,25 +15,113 @@ export const projects = [
       { 
         id: "overview", 
         title: "1. Project Overview", 
-        content: "The Challenge: Use the provided Titanic passenger data (cabin, age, price of ticket, etc.) to try to predict who \
-        survied and who did not on the Titanic.",
-      },
-      { 
-        id: "baseline", 
-        title: "2. Baseline Model & Score: Tutorial", 
-        content: "Using the provided model to get a baseline score. This is the score to beat",
-        images: [
+        content: [
+          { type: "bold", text: "What is Kaggle? " },
+          { text: "Kaggle is an online platform for data science competitions and collaborative machine learning. The competitions\
+            they host provide datasets for practitioners to solve real-world problems, allowing you to create your own models, \
+            have them scored, and use that as a method of comparison." },
+          { type: "break" }, { type: "break" },
+          { type: "bold", text: "The Challenge: " },
+          { text: "Use the provided Titanic passenger data to create a model that predicts which passengers survived the Titanic disaster." },
+          { type: "break" }, { type: "break" },
+          { type: "bold", text: "The Data: " },
+          { text: "Broken down into training (891 samples, discloses the ground truth - whether the passenger survived or not) and testing (418 samples, does\
+            not disclose the ground truth)." },
+          { type: "break" },
+          { text: "Data Dictionary:" },
           {
-            src: score1,
-            alt: "Baseline Titanic model score",
-            description: "The initial Kaggle tutorial score used as the baseline to beat for the Titanic survival model."
+            type: "list",
+            items: [
+              "Survived(ground truth): Whether the passenger survived - int (0 = No, 1 = Yes)",
+              "Pclass: Passenger ticket class - int (1 = 1st(upper), 2 = 2nd(middle), 3 = 3rd(lower))",
+              "Name: Passenger name - string",
+              "Sex: Passenger sex - string ('male' or 'female')",
+              "Age: Passenger age in years - float(if estimated, it is in the form of xx.5)",
+              "SibSp: # of siblings/spouses the passenger has on board - int",
+              "Parch: # of parents/children the passenger has on board - int",
+              "Ticket: Ticket number of passenger - string",
+              "Fare: Fare paid for the ticket - float",
+              "Cabin: Cabin number - string",
+              "Embarked: Port of embarkation - string ('S' = Southampton, 'C' = Cherbourg, 'Q' = Queenstown)"
+            ]
+          },
+        ],
+      },
+      {
+        id: "baseline",
+        title: "2. Baseline Model & Score: Tutorial - Score: 0.77511",
+        blocks: [
+          {
+            type: "text",
+            content: [
+              { text: "Used the provided model in the tutorial to get a baseline score. This is the score to beat." }
+            ]
           },
           {
-            src: tutorialModel,
+            type: "image",
+            src: score1,
+            alt: "Baseline Titanic model score",
+            //description: "The initial Kaggle tutorial score used as the baseline to beat for the Titanic survival model."
+          },
+          {
+            type: "text",
+            content: [
+              { text: "The tutorial uses a basic random forest model as shown here" }
+            ]
+          },
+          {
+            type: "image",
+            src: tutorial,
             alt: "Titanic tutorial model output",
-            description: "This tutorial model gives a simple prediction framework to compare against more advanced feature engineering and model tuning."
+            description: "The model picks out four features, one hot encodes them, and uses very little hyperparameter tuning."
           }
         ]
+      },
+      {
+        id: "data-prep",
+        title: "3. Data Preparation",
+        // blocks: [
+        //   {
+        //     type: "text",
+        //     content: [
+        //       { text: "Used the provided model in the tutorial to get a baseline score. This is the score to beat." }
+        //     ]
+        //   },
+        //   {
+        //     type: "image",
+        //     src: score1,
+        //     alt: "Baseline Titanic model score",
+        //     //description: "The initial Kaggle tutorial score used as the baseline to beat for the Titanic survival model."
+        //   },
+        //   {
+        //     type: "text",
+        //     content: [
+        //       { text: "The tutorial uses a basic random forest model as shown here" }
+        //     ]
+        //   },
+        //   {
+        //     type: "image",
+        //     src: tutorial,
+        //     alt: "Titanic tutorial model output",
+        //     description: "The model picks out four features, one hot encodes them, and uses very little hyperparameter tuning."
+        //   }
+        // ]
+      },
+      {
+        id: "x",
+        title: "4. "
+      },
+      {
+        id: "x",
+        title: "5. "
+      },
+      {
+        id: "x",
+        title: "6. "
+      },
+      {
+        id: "x",
+        title: "7. "
       }
     ]
   },
