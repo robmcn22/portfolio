@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="font-bold text-xl text-gray-800">
+        <div className="font-bold text-2xl text-gray-800">
           Robbie McNair - Portfolio
         </div>
         <div className="space-x-6 text-sm font-medium text-gray-600">

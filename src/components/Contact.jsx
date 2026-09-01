@@ -3,16 +3,23 @@
 import React from 'react';
 
 export default function Contact() {
+  const socialLinks = [ // NEEDS EDITS
+    { label: 'Link', href: '#' },
+    { label: 'Link', href: '#' },
+    { label: 'Link', href: '#' },
+    { label: 'Link', href: '#' },
+  ];
+
   return (
-    <footer id="contact" className="bg-gray-900 text-white py-30">
+    <footer id="contact" className="bg-gray-900 text-white pt-15 pb-10">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <h2 className="text-2xl font-bold mb-4">Let's Connect</h2>
         <p className="text-gray-400 mb-6 max-w-xl mx-auto">
-          I am currently looking for job opportunities in data science and machine learning. 
+          I am currently looking for job opportunities in data science and machine learning.
           Whether you have an offer or just want to ask a question, click the link!
         </p>
-        <a 
-          href="mailto:your.email@example.com" 
+        <a
+          href="mailto:robmcnr22@gmail.com"
           className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors font-medium"
         >
           <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -20,6 +27,22 @@ export default function Contact() {
           </svg>
           <span>Say Hello</span>
         </a>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-6 mt-12 pt-10 border-t border-gray-700">
+        <div className="flex flex-wrap items-center justify-center gap-10 text-sm text-gray-300">
+          {socialLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+              className="hover:text-white transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </div>
     </footer>
   );

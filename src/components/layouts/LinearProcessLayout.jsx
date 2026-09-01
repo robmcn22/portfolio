@@ -24,7 +24,7 @@ export default function LinearProcessLayout({ stages }) {
   }, [stages]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-12 w-full">
+    <div className="flex flex-col md:flex-row gap-10 w-full">
       {/* Interactive Sidebar */}
       <aside className="w-full md:w-64 shrink-0">
         <div className="sticky top-24">
@@ -36,7 +36,7 @@ export default function LinearProcessLayout({ stages }) {
               <li key={stage.id}>
                 <a
                   href={`#${stage.id}`}
-                  className={`block pl-4 py-1 border-l-2 -ml-[2px] transition-colors ${
+                  className={`block pl-4 py-1 border-l-2 -ml-0.5 transition-colors ${
                     activeSection === stage.id
                       ? "border-blue-600 text-blue-600 font-semibold"
                       : "border-transparent text-gray-500 hover:text-gray-900"
@@ -51,7 +51,7 @@ export default function LinearProcessLayout({ stages }) {
       </aside>
 
       {/* Article / Step-by-Step Content */}
-      <main className="flex-grow max-w-3xl bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100 space-y-16">
+      <main className="grow max-w-5xl bg-white p-8 md:p-10 rounded-xl shadow-sm border border-gray-100 space-y-16">
         {stages.map((stage) => (
           <section id={stage.id} key={stage.id} className="scroll-mt-24">
             <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
@@ -60,19 +60,25 @@ export default function LinearProcessLayout({ stages }) {
             <p className="text-gray-700 leading-relaxed text-lg mb-4">
               {stage.content}
             </p>
-            {stage.images?.map((image, index) => (
-              <img
-                key={`${stage.id}-${index}`}
-                src={image}
-                alt={`${stage.title} ${index + 1}`}
-                className="w-full rounded-lg border border-gray-200 shadow-sm my-4"
-              />
-            ))}
-            {stage.codeSnippet && (
-              <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm font-mono">
-                <code>{stage.codeSnippet}</code>
-              </pre>
-            )}
+            {stage.images?.map((image, index) => {
+              const imageData =
+                typeof image === "string" ? { src: image, description: "" } : image;
+
+              return (
+                <figure key={`${stage.id}-${index}`} className="my-4">
+                  <img
+                    src={imageData.src}
+                    alt={imageData.alt || `${stage.title} ${index + 1}`}
+                    className="w-full rounded-lg border border-gray-200 shadow-sm"
+                  />
+                  {imageData.description && (
+                    <figcaption className="mt-2 text-sm text-gray-600 italic">
+                      {imageData.description}
+                    </figcaption>
+                  )}
+                </figure>
+              );
+            })}
           </section>
         ))}
       </main>

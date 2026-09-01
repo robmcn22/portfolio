@@ -15,15 +15,25 @@ export const projects = [
       { 
         id: "overview", 
         title: "1. Project Overview", 
-        content: "The Challenge: Use the provided Titanic passenger data \
-        (cabin, age, price of ticket, etc.) to try to predict who survied and who did not on the Titanic.",
-        //codeSnippet: "import pandas as pd\ndf = pd.read_csv('train.csv')"
+        content: "The Challenge: Use the provided Titanic passenger data (cabin, age, price of ticket, etc.) to try to predict who \
+        survied and who did not on the Titanic.",
       },
       { 
         id: "baseline", 
         title: "2. Baseline Model & Score: Tutorial", 
         content: "Using the provided model to get a baseline score. This is the score to beat",
-        images: [score1, tutorialModel]
+        images: [
+          {
+            src: score1,
+            alt: "Baseline Titanic model score",
+            description: "The initial Kaggle tutorial score used as the baseline to beat for the Titanic survival model."
+          },
+          {
+            src: tutorialModel,
+            alt: "Titanic tutorial model output",
+            description: "This tutorial model gives a simple prediction framework to compare against more advanced feature engineering and model tuning."
+          }
+        ]
       }
     ]
   },
