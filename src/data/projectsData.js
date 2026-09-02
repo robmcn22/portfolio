@@ -1,6 +1,22 @@
-import score1 from "../assets/1score.PNG";
-
-import tutorial from "../assets/tutorial model.PNG";
+import tutorialScore from "../assets/1.1 tutorialScore.PNG";
+import tutorialModel from "../assets/1.2 tutorialModel.PNG";
+import originalHead from "../assets/2.1 originalHead.PNG";
+import title from "../assets/2.2 title.PNG";
+import dropCols from "../assets/2.3 dropCols.PNG";
+import nulls from "../assets/2.4 nulls.PNG";
+import fill1 from "../assets/2.5 fill1.PNG";
+import fill2 from "../assets/2.6 fill2.PNG";
+import fill3 from "../assets/2.7 fill3.PNG";
+import fixedNulls from "../assets/2.8 fixedNulls.PNG";
+import familySize from "../assets/2.9 famSize.PNG";
+import encode1 from "../assets/2.10 encode1.PNG";
+import encode2 from "../assets/2.11 encode2.PNG";
+import titleCounts from "../assets/2.12 titleCounts.PNG";
+import fixedTitleCounts from "../assets/2.13 fixedTitleCounts.PNG";
+import encode3 from "../assets/2.14 encode3.PNG";
+import deckCounts from "../assets/2.15 deckCounts.PNG";
+import encode4 from "../assets/2.16 encode4.PNG";
+import finalHead from "../assets/2.17 finalHead.PNG";
 
 export const projects = [
   {
@@ -48,7 +64,7 @@ export const projects = [
         ],
       },
       {
-        id: "baseline",
+        id: "tutorial",
         title: "2. Baseline Model & Score: Tutorial - Score: 0.77511",
         blocks: [
           {
@@ -59,9 +75,8 @@ export const projects = [
           },
           {
             type: "image",
-            src: score1,
+            src: tutorialScore,
             alt: "Baseline Titanic model score",
-            //description: "The initial Kaggle tutorial score used as the baseline to beat for the Titanic survival model."
           },
           {
             type: "text",
@@ -71,7 +86,7 @@ export const projects = [
           },
           {
             type: "image",
-            src: tutorial,
+            src: tutorialModel,
             alt: "Titanic tutorial model output",
             description: "The model picks out four features, one hot encodes them, and uses very little hyperparameter tuning."
           }
@@ -80,48 +95,152 @@ export const projects = [
       {
         id: "data-prep",
         title: "3. Data Preparation",
-        // blocks: [
-        //   {
-        //     type: "text",
-        //     content: [
-        //       { text: "Used the provided model in the tutorial to get a baseline score. This is the score to beat." }
-        //     ]
-        //   },
-        //   {
-        //     type: "image",
-        //     src: score1,
-        //     alt: "Baseline Titanic model score",
-        //     //description: "The initial Kaggle tutorial score used as the baseline to beat for the Titanic survival model."
-        //   },
-        //   {
-        //     type: "text",
-        //     content: [
-        //       { text: "The tutorial uses a basic random forest model as shown here" }
-        //     ]
-        //   },
-        //   {
-        //     type: "image",
-        //     src: tutorial,
-        //     alt: "Titanic tutorial model output",
-        //     description: "The model picks out four features, one hot encodes them, and uses very little hyperparameter tuning."
-        //   }
-        // ]
+        blocks: [
+          {
+            type: "text",
+            content: [
+              { text: "I prepared the Titanic data in stages so the models could work with clean, numeric features. I first inspected the original columns, then handled missing values, created useful features, and encoded categorical values." }
+            ]
+          },
+          {
+            type: "image",
+            src: originalHead,
+            alt: "Original Titanic dataset preview",
+            description: "The original dataframe before preprocessing begins."
+          },
+          {
+            type: "image",
+            src: title,
+            alt: "Titanic titles extracted from passenger names",
+            description: "Passenger titles are extracted from names to preserve information about status and demographics."
+          },
+          {
+            type: "image",
+            src: dropCols,
+            alt: "Titanic dataframe after dropping unused columns",
+            description: "Identifier and text columns that are not directly useful to the model are removed."
+          },
+          {
+            type: "text",
+            content: [
+              { type: "bold", text: "Handling missing values: " },
+              { text: "I checked the remaining columns, filled missing entries with appropriate values, and verified that the nulls were resolved." }
+            ]
+          },
+          {
+            type: "image",
+            src: nulls,
+            alt: "Titanic dataframe showing missing values",
+            description: "The null-value check identifies incomplete values that must be handled before training."
+          },
+          {
+            type: "image",
+            src: fill1,
+            alt: "First Titanic missing-value fill step",
+            description: "The first imputation operation fills a column with missing passenger information."
+          },
+          {
+            type: "image",
+            src: fill2,
+            alt: "Second Titanic missing-value fill step",
+            description: "The second imputation operation applies a consistent replacement value."
+          },
+          {
+            type: "image",
+            src: fill3,
+            alt: "Third Titanic missing-value fill step",
+            description: "The final targeted fill operation completes the initial missing-value cleanup."
+          },
+          {
+            type: "image",
+            src: fixedNulls,
+            alt: "Titanic dataframe after missing values were fixed",
+            description: "The dataframe after the missing-value checks and fill operations are complete."
+          },
+          {
+            type: "text",
+            content: [
+              { type: "bold", text: "Feature engineering and encoding: " },
+              { text: "I created family-size information, grouped rare titles, derived cabin-deck information, and converted categorical features into model-ready numeric values." }
+            ]
+          },
+          {
+            type: "image",
+            src: familySize,
+            alt: "Titanic family-size feature",
+            description: "Family size is derived from the number of siblings, spouses, parents, and children aboard."
+          },
+          {
+            type: "image",
+            src: encode1,
+            alt: "First Titanic categorical encoding step",
+            description: "The first categorical feature is converted into a numeric representation."
+          },
+          {
+            type: "image",
+            src: encode2,
+            alt: "Second Titanic categorical encoding step",
+            description: "A second categorical encoding step prepares another feature for model input."
+          },
+          {
+            type: "image",
+            src: titleCounts,
+            alt: "Titanic title frequency counts",
+            description: "Title frequencies are examined so uncommon titles can be grouped consistently."
+          },
+          {
+            type: "image",
+            src: fixedTitleCounts,
+            alt: "Titanic titles after grouping rare values",
+            description: "Rare passenger titles are consolidated to reduce noise in the feature."
+          },
+          {
+            type: "image",
+            src: encode3,
+            alt: "Titanic title encoding",
+            description: "The cleaned title feature is encoded into a numeric value."
+          },
+          {
+            type: "image",
+            src: deckCounts,
+            alt: "Titanic cabin deck counts",
+            description: "Cabin letters are summarized as deck categories before encoding."
+          },
+          {
+            type: "image",
+            src: encode4,
+            alt: "Titanic cabin deck encoding",
+            description: "The deck category is converted into a numeric feature for the models."
+          },
+          {
+            type: "text",
+            content: [
+              { text: "The final preview confirms that the cleaned and engineered features are present in a consistent format and ready for model training." }
+            ]
+          },
+          {
+            type: "image",
+            src: finalHead,
+            alt: "Final prepared Titanic dataset preview",
+            description: "The completed feature set after cleaning, engineering, and categorical encoding."
+          }
+        ]
       },
       {
-        id: "x",
-        title: "4. "
+        id: "basic-dt",
+        title: "4. Basic Decision Tree Model"
       },
       {
-        id: "x",
-        title: "5. "
+        id: "improved-dt",
+        title: "5. Improved Decision Tree Model"
       },
       {
-        id: "x",
-        title: "6. "
+        id: "basic-rf",
+        title: "6. Basic Random Forest Model"
       },
       {
-        id: "x",
-        title: "7. "
+        id: "improved-rf",
+        title: "7. Improved Random Forest Model"
       }
     ]
   },
