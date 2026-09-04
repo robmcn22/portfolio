@@ -17,6 +17,19 @@ import encode3 from "../assets/2.14 encode3.PNG";
 import deckCounts from "../assets/2.15 deckCounts.PNG";
 import encode4 from "../assets/2.16 encode4.PNG";
 import finalHead from "../assets/2.17 finalHead.PNG";
+import baseDTXY from "../assets/3.1 xAndY.PNG";
+import baseDTModel from "../assets/3.2 createAndFitModel.PNG";
+import baseDTPredictions from "../assets/3.3 predictModel.PNG";
+import baseDTScore from "../assets/3.4 baseDTScore.PNG";
+import gridSearchParams from "../assets/4.1 gridSearchParams.PNG";
+import createGridSearch from "../assets/4.2 createGridSearch.PNG";
+import gridSearchBestParams from "../assets/4.3 gridSearchBestParams.PNG";
+import improvedDTModel from "../assets/4.4 fitDTWithBestParams.PNG";
+import improvedDTScore from "../assets/4.5 improvedDTScore.PNG";
+import baseRFXY from "../assets/5.1 xAndY.PNG";
+import baseRFModel from "../assets/5.2 creatAndFitModel.PNG";
+import baseRFPredictions from "../assets/5.3 predict.PNG";
+import baseRFScore from "../assets/5.4 baseRFScore.PNG";
 
 export const projects = [
   {
@@ -93,7 +106,7 @@ export const projects = [
         ]
       },
       {
-        id: "data-prep",
+        id: "data-prep", // REVIEW ***
         title: "3. Data Preparation",
         blocks: [
           {
@@ -227,16 +240,118 @@ export const projects = [
         ]
       },
       {
-        id: "basic-dt",
-        title: "4. Basic Decision Tree Model"
+        id: "basic-dt", // REVIEW ***
+        title: "4. Basic Decision Tree Model",
+        blocks: [
+          {
+            type: "text",
+            content: [
+              { text: "With the prepared features in place, I trained a basic decision tree as the first model built from the cleaned dataset. The feature matrix contains the input columns, while the target contains each passenger's survival outcome." }
+            ]
+          },
+          {
+            type: "image",
+            src: baseDTXY,
+            alt: "Decision tree feature matrix and target split",
+            description: "The prepared data is separated into X, the passenger features used for prediction, and y, the survival target used during training."
+          },
+          {
+            type: "image",
+            src: baseDTModel,
+            alt: "Basic decision tree model being created and fitted",
+            description: "A decision tree classifier is created and fitted to the training data to learn rules for predicting survival."
+          },
+          {
+            type: "image",
+            src: baseDTPredictions,
+            alt: "Basic decision tree predictions",
+            description: "The fitted decision tree generates survival predictions for the held-out test data."
+          },
+          {
+            type: "image",
+            src: baseDTScore,
+            alt: "Basic decision tree Kaggle score",
+            description: "This submission score establishes the baseline for the decision-tree experiments that follow."
+          }
+        ]
       },
       {
-        id: "improved-dt",
-        title: "5. Improved Decision Tree Model"
+        id: "improved-dt", // REVIEW ***
+        title: "5. Improved Decision Tree Model",
+        blocks: [
+          {
+            type: "text",
+            content: [
+              { text: "I improved the decision tree by searching across several hyperparameter combinations instead of relying on the classifier defaults. Grid search evaluates the candidate settings consistently and identifies the combination with the strongest validation performance." }
+            ]
+          },
+          {
+            type: "image",
+            src: gridSearchParams,
+            alt: "Decision tree grid search parameter ranges",
+            description: "The parameter grid defines the tree settings to test, including its depth and the minimum samples required for splits and leaves."
+          },
+          {
+            type: "image",
+            src: createGridSearch,
+            alt: "Decision tree grid search configuration",
+            description: "GridSearchCV is configured to evaluate each parameter combination using cross-validation."
+          },
+          {
+            type: "image",
+            src: gridSearchBestParams,
+            alt: "Best decision tree grid search parameters",
+            description: "The search returns the parameter combination that performed best across the validation folds."
+          },
+          {
+            type: "image",
+            src: improvedDTModel,
+            alt: "Improved decision tree fitted with best parameters",
+            description: "A new decision tree is fitted using the best settings found by the grid search."
+          },
+          {
+            type: "image",
+            src: improvedDTScore,
+            alt: "Improved decision tree Kaggle score",
+            description: "The tuned decision tree produces the improved submission score shown here."
+          }
+        ]
       },
       {
-        id: "basic-rf",
-        title: "6. Basic Random Forest Model"
+        id: "basic-rf", // REVIEW ***
+        title: "6. Basic Random Forest Model",
+        blocks: [
+          {
+            type: "text",
+            content: [
+              { text: "I then trained a basic random forest to compare an ensemble of decision trees with the single-tree approach. The workflow keeps the same prepared features and target so the model comparison remains consistent." }
+            ]
+          },
+          {
+            type: "image",
+            src: baseRFXY,
+            alt: "Random forest feature matrix and target split",
+            description: "The same prepared passenger features and survival target are split into X and y for the random forest."
+          },
+          {
+            type: "image",
+            src: baseRFModel,
+            alt: "Basic random forest model being created and fitted",
+            description: "A random forest classifier is created and fitted, combining many decision trees to make its predictions."
+          },
+          {
+            type: "image",
+            src: baseRFPredictions,
+            alt: "Basic random forest predictions",
+            description: "The fitted random forest predicts survival outcomes for the test passengers."
+          },
+          {
+            type: "image",
+            src: baseRFScore,
+            alt: "Basic random forest Kaggle score",
+            description: "This score shows how the untuned random forest performs against the earlier model baselines."
+          }
+        ]
       },
       {
         id: "improved-rf",
