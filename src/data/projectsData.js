@@ -34,8 +34,18 @@ import improvedRFXY from "../assets/6.1 xAndY.PNG";
 import improvedRFGridSearch from "../assets/6.2 gridSearch.PNG";
 import improvedRFGridSearchFit from "../assets/6.3 gridSearchFit.PNG";
 import improvedRFBestParams from "../assets/6.4 bestParams.PNG";
-import improvedRFFit from "../assets/6.5 dtBestFit.PNG";
+import improvedRFFit from "../assets/6.5 rfBestFit.PNG";
 import improvedRFScore from "../assets/6.6 score.PNG";
+import fareMissing from "../assets/7.1 naFare.PNG";
+import fareFixed from "../assets/7.2 naFairFix.PNG";
+import fareCheck from "../assets/7.3 showNaFairFix.PNG";
+import baseGBXY from "../assets/7.4 xAndY.PNG";
+import baseGBModel from "../assets/7.5 gbmBase.PNG";
+import baseGBScore from "../assets/7.6 score.PNG";
+import improvedGBParams from "../assets/8.1 gbParams.PNG";
+import improvedGBBestParams from "../assets/8.2 gbBestParams.PNG";
+import improvedGBFit from "../assets/8.3 gbBestFit.PNG";
+import improvedGBScore from "../assets/8.4 score.PNG";
 
 export const projects = [
   {
@@ -379,7 +389,7 @@ export const projects = [
             type: "image",
             src: improvedRFGridSearch,
             alt: "Random forest grid search parameter ranges",
-            description: "The parameter grid defines the random forest configurations to test, including tree depth, sample limits, feature selection, class weighting, split criterion, and the number of trees."
+            description: "The parameter grid defines the random forest configurations to test, including tree depth, sample limits, feature selection, split criterion, and the number of trees."
           },
           {
             type: "image",
@@ -391,7 +401,7 @@ export const projects = [
             type: "image",
             src: improvedRFBestParams,
             alt: "Best random forest grid search parameters",
-            description: "The search identifies the best-performing random forest configuration, including 400 estimators, no maximum depth, a minimum leaf size of four, and a minimum split size of ten."
+            description: "The search identifies the best-performing random forest configuration, including 100 estimators, no maximum depth, a minimum leaf size of five, and a minimum split size of two."
           },
           {
             type: "image",
@@ -412,7 +422,109 @@ export const projects = [
             ]
           }
         ]
-      }
+      },
+      {
+        id: "base-gradient-boost",
+        title: "8. Base Gradient Boost",
+        blocks: [
+          {
+            type: "text",
+            content: [
+              { text: "Before training the gradient boosting model, I found one missing value in the Fare column. I replaced it with the median fare calculated from the training data, then verified that the missing value had been resolved." }
+            ]
+          },
+          {
+            type: "image",
+            src: fareMissing,
+            alt: "Titanic dataset showing a missing Fare value",
+            description: "The Fare column contains one missing value that must be handled before fitting the gradient boosting classifier."
+          },
+          {
+            type: "image",
+            src: fareFixed,
+            alt: "Titanic Fare value filled with the training median",
+            description: "The missing Fare entry is replaced with the median fare from the training data so the feature remains numeric and representative."
+          },
+          {
+            type: "image",
+            src: fareCheck,
+            alt: "Titanic Fare column after missing-value fix",
+            description: "A follow-up check confirms that the Fare column no longer contains a missing value."
+          },
+          {
+            type: "image",
+            src: baseGBXY,
+            alt: "Gradient boosting feature matrix and target split",
+            description: "The prepared passenger features are assigned to X and the survival outcomes are assigned to y for supervised learning."
+          },
+          {
+            type: "image",
+            src: baseGBModel,
+            alt: "Base gradient boosting model being fitted",
+            description: "A GradientBoostingClassifier is created and fitted to the cleaned training data before predicting the test passengers."
+          },
+          {
+            type: "image",
+            src: baseGBScore,
+            alt: "Base gradient boosting Kaggle score",
+            description: "The submission score records the performance of the untuned gradient boosting classifier."
+          },
+        ]
+      },
+      {
+        id: "improved-gradient-boost",
+        title: "9. Improved Gradient Boost",
+        blocks: [
+          {
+            type: "text",
+            content: [
+              { text: "I improved the gradient boosting model by testing combinations of estimators, learning rates, tree depth, and subsampling with five-fold cross-validation. The best configuration was then fitted to the full prepared training data before generating the final submission." }
+            ]
+          },
+          {
+            type: "image",
+            src: improvedGBParams,
+            alt: "Gradient boosting grid search parameter ranges",
+            description: "The parameter grid defines the gradient boosting configurations to compare, including the number of estimators, learning rate, tree depth, and subsampling ratio."
+          },
+          {
+            type: "image",
+            src: improvedGBBestParams,
+            alt: "Best gradient boosting parameters",
+            description: "The cross-validated search reports the parameter combination that produced the strongest validation accuracy."
+          },
+          {
+            type: "image",
+            src: improvedGBFit,
+            alt: "Improved gradient boosting model fitted with best parameters",
+            description: "The best gradient boosting estimator is fitted to the prepared training data and used to predict survival for the test set."
+          },
+          {
+            type: "image",
+            src: improvedGBScore,
+            alt: "Improved gradient boosting Kaggle score",
+            description: "The final submission score shows the performance of the tuned gradient boosting model."
+          },
+        ]
+      },
+      {
+        id: "base-xgboost",
+        title: "10. Base XGBoost",
+        blocks: [
+          {
+            
+          },
+        ]
+      },
+      {
+        id: "improved-xgboost",
+        title: "11. Improved XGBoost",
+        blocks: [
+          {
+            
+          },
+        ]
+      },
     ]
   },
   // {
