@@ -30,6 +30,12 @@ import baseRFXY from "../assets/5.1 xAndY.PNG";
 import baseRFModel from "../assets/5.2 creatAndFitModel.PNG";
 import baseRFPredictions from "../assets/5.3 predict.PNG";
 import baseRFScore from "../assets/5.4 baseRFScore.PNG";
+import improvedRFXY from "../assets/6.1 xAndY.PNG";
+import improvedRFGridSearch from "../assets/6.2 gridSearch.PNG";
+import improvedRFGridSearchFit from "../assets/6.3 gridSearchFit.PNG";
+import improvedRFBestParams from "../assets/6.4 bestParams.PNG";
+import improvedRFFit from "../assets/6.5 dtBestFit.PNG";
+import improvedRFScore from "../assets/6.6 score.PNG";
 
 export const projects = [
   {
@@ -37,9 +43,9 @@ export const projects = [
     title: "Kaggle Competition - Titanic (WIP)",
     layoutType: "linear",
     description: "Predictive model forecasting survival outcomes for passengers on the Titanic.",
-    techStack: ["Python"],
+    techStack: ["Python", "Pandas", "Machine Learning"],
     github: "https://github.com/robmcn22/portfolio",
-    live: "#",
+    live: "https://github.com/robmcn22/portfolio/blob/main/titanic-kaggle/titanic.ipynb",
     stages: [
       { 
         id: "overview", 
@@ -354,8 +360,58 @@ export const projects = [
         ]
       },
       {
-        id: "improved-rf",
-        title: "7. Improved Random Forest Model"
+        id: "improved-rf", // REVIEW ***
+        title: "7. Improved Random Forest Model",
+        blocks: [
+          {
+            type: "text",
+            content: [
+              { text: "To improve the random forest, I kept the prepared features and target consistent, then searched across multiple model settings with cross-validation. This made it possible to compare a broad set of ensemble configurations and select the strongest combination." }
+            ]
+          },
+          {
+            type: "image",
+            src: improvedRFXY,
+            alt: "Improved random forest feature matrix and target split",
+            description: "The prepared Titanic data is separated into X, the passenger features used for prediction, and y, the survival target used to evaluate the model."
+          },
+          {
+            type: "image",
+            src: improvedRFGridSearch,
+            alt: "Random forest grid search parameter ranges",
+            description: "The parameter grid defines the random forest configurations to test, including tree depth, sample limits, feature selection, class weighting, split criterion, and the number of trees."
+          },
+          {
+            type: "image",
+            src: improvedRFGridSearchFit,
+            alt: "Random forest grid search fitting progress",
+            description: "GridSearchCV evaluates each parameter combination across five cross-validation folds while the progress bar tracks the total model fits."
+          },
+          {
+            type: "image",
+            src: improvedRFBestParams,
+            alt: "Best random forest grid search parameters",
+            description: "The search identifies the best-performing random forest configuration, including 400 estimators, no maximum depth, a minimum leaf size of four, and a minimum split size of ten."
+          },
+          {
+            type: "image",
+            src: improvedRFFit,
+            alt: "Improved random forest fitted with best parameters",
+            description: "The selected random forest estimator is fitted with the best parameters before generating predictions for the test passengers."
+          },
+          {
+            type: "image",
+            src: improvedRFScore,
+            alt: "Improved random forest Kaggle score",
+            description: "The final submission score shows the performance of the tuned random forest after the grid-search optimization."
+          },
+          {
+            type: "text",
+            content: [
+              { text: "This model is the first one to achieve a higher accuracy score than the baseline tutorial model." }
+            ]
+          }
+        ]
       }
     ]
   },

@@ -4,10 +4,10 @@ import React from 'react';
 
 export default function Skills() {
   const skillCategories = [ //UPDATE
-    { title: "Languages", skills: ["#"] }, //["Python", "SQL", "R", "JavaScript", "HTML/CSS"]
-    { title: "Machine Learning", skills: ["#"] }, //["Scikit-Learn", "XGBoost", "PyTorch", "TensorFlow"]
-    { title: "Data & Analysis", skills: ["#"] }, //["Pandas", "NumPy", "Matplotlib", "Tableau"]
-    { title: "Tools & Web", skills: ["#"] } //["Git", "Docker", "React", "Tailwind CSS"]
+    { title: "Languages", skills: ["Python"] }, //["SQL", "R", "JavaScript", "HTML/CSS"]
+    { title: "Machine Learning", skills: ["Scikit-Learn"] }, //["XGBoost", "PyTorch", "TensorFlow"]
+    { title: "Data & Analysis", skills: ["Pandas", "Jupyter Notebook"] }, //["NumPy", "Matplotlib", "Tableau"]
+    { title: "Tools & Web", skills: ["Git"] } //["Docker", "React", "Tailwind CSS"]
   ];
 
   return (
