@@ -46,6 +46,12 @@ import improvedGBParams from "../assets/8.1 gbParams.PNG";
 import improvedGBBestParams from "../assets/8.2 gbBestParams.PNG";
 import improvedGBFit from "../assets/8.3 gbBestFit.PNG";
 import improvedGBScore from "../assets/8.4 score.PNG";
+import baseXGModel from "../assets/9.1 baseXg.PNG";
+import baseXGScore from "../assets/9.2 score.PNG";
+import improvedXGParams from "../assets/10.1 xgbParams.PNG";
+import improvedXGGrid from "../assets/10.2 xgbGrid.PNG";
+import improvedXGBest from "../assets/10.3 bestXbg.PNG";
+import improvedXGScore from "../assets/10.4 score.PNG";
 
 export const projects = [
   {
@@ -424,7 +430,7 @@ export const projects = [
         ]
       },
       {
-        id: "base-gradient-boost",
+        id: "base-gradient-boost", // REVIEW ***
         title: "8. Base Gradient Boost",
         blocks: [
           {
@@ -472,7 +478,7 @@ export const projects = [
         ]
       },
       {
-        id: "improved-gradient-boost",
+        id: "improved-gradient-boost", // REVIEW ***
         title: "9. Improved Gradient Boost",
         blocks: [
           {
@@ -508,20 +514,50 @@ export const projects = [
         ]
       },
       {
-        id: "base-xgboost",
+        id: "base-xgboost", // REVIEW ***
         title: "10. Base XGBoost",
         blocks: [
           {
-            
+            type: "image",
+            src: baseXGModel,
+            alt: "Base XGBoost model",
+            description: "The base XGBoost classifier is created and fitted to the prepared Titanic training data."
+          },
+          {
+            type: "image",
+            src: baseXGScore,
+            alt: "Base XGBoost Kaggle score",
+            description: "The submission score records the performance of the untuned XGBoost classifier."
           },
         ]
       },
       {
-        id: "improved-xgboost",
+        id: "improved-xgboost", // REVIEW ***
         title: "11. Improved XGBoost",
         blocks: [
           {
-            
+            type: "image",
+            src: improvedXGParams,
+            alt: "XGBoost grid search parameters",
+            description: "The parameter grid defines the XGBoost configurations to compare during tuning."
+          },
+          {
+            type: "image",
+            src: improvedXGGrid,
+            alt: "XGBoost grid search",
+            description: "The grid search evaluates the configured XGBoost parameter combinations."
+          },
+          {
+            type: "image",
+            src: improvedXGBest,
+            alt: "Best XGBoost model",
+            description: "The best-performing XGBoost configuration is selected from the grid search results."
+          },
+          {
+            type: "image",
+            src: improvedXGScore,
+            alt: "Improved XGBoost Kaggle score",
+            description: "The final submission score shows the performance of the tuned XGBoost classifier."
           },
         ]
       },
