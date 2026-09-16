@@ -12,7 +12,7 @@ export default function Contact() {
 
   return (
     <footer id="contact" className="bg-gray-900 text-white pt-15 pb-10">
-      <div className="max-w-5xl mx-auto px-6 text-center">
+      <div className="max-w-5xl mx-auto px-4 md:px-6 text-center">
         <h2 className="text-2xl font-bold mb-4">Let's Connect</h2>
         <p className="text-gray-400 mb-6 max-w-xl mx-auto">
           I am currently looking for job opportunities in data science and machine learning.
@@ -29,7 +29,7 @@ export default function Contact() {
         </a>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 mt-12 pt-10 border-t border-gray-700">
+      <div className="max-w-5xl mx-auto px-4 md:px-6 mt-8 md:mt-12 pt-8 md:pt-10 border-t border-gray-700">
         <div className="flex flex-wrap items-center justify-center gap-10 text-sm text-gray-300">
           {socialLinks.map((link) => (
             <a

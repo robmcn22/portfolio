@@ -6,9 +6,9 @@ import { Code, ExternalLink } from 'lucide-react';
 
 export default function ProjectCard({ project }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white border border-gray-200 rounded-lg p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow">
       <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
-      <p className="text-gray-600 mb-4 h-16 overflow-hidden">{project.description}</p>
+      <p className="text-gray-600 mb-2 h-16 overflow-hidden">{project.description}</p>
       
       <div className="flex flex-wrap gap-2 mb-6">
         {project.techStack.map((tech, index) => (
@@ -18,15 +18,21 @@ export default function ProjectCard({ project }) {
         ))}
       </div>
       
-      <div className="flex space-x-4 text-sm font-medium">
+      <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium">
         {/* Changed from an <a> tag to a React Router <Link> */}
         <Link to={`/project/${project.id}`} className="flex items-center text-gray-600 hover:text-gray-900">
-          <Code size={16} className="mr-1" /> View Full Process
+          <Code size={16} className="mr-1" /> View Process
         </Link>
         
-        {/* <a href={project.live} className="flex items-center text-blue-600 hover:text-blue-800">
-          <ExternalLink size={16} className="mr-1" /> Live Demo
-        </a> */}
+        {project.dashboardData ? (
+          <Link to={`/project/${project.id}?view=dashboard`} className="flex items-center text-blue-600 hover:text-blue-800">
+            <ExternalLink size={16} className="mr-1" /> View Dashboard
+          </Link>
+        ) : (
+          <a href={project.live} className="flex items-center text-blue-600 hover:text-blue-800">
+            <ExternalLink size={16} className="mr-1" /> Full Code
+          </a>
+        )}
       </div>
     </div>
   );

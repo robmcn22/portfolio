@@ -10,7 +10,7 @@ export default function DashboardLayout({ dashboardData }) {
       {/* Metric Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {dashboardData.kpis.map((kpi, idx) => (
-          <div key={idx} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+          <div key={idx} className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm">
             <span className="text-sm font-medium text-gray-500">{kpi.label}</span>
             <div className="text-3xl font-extrabold text-gray-900 mt-2">{kpi.value}</div>
           </div>
@@ -18,7 +18,7 @@ export default function DashboardLayout({ dashboardData }) {
       </div>
 
       {/* Tab Navigation */}
-      <div className="border-b border-gray-200 flex space-x-8">
+      <div className="border-b border-gray-200 flex flex-wrap gap-x-6 gap-y-2">
         {dashboardData.tabs.map((tab) => (
           <button
             key={tab.id}
@@ -35,7 +35,7 @@ export default function DashboardLayout({ dashboardData }) {
       </div>
 
       {/* Tab Panel Display */}
-      <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+      <div className="bg-white p-4 md:p-8 rounded-xl border border-gray-200 shadow-sm">
         {dashboardData.tabs.find((t) => t.id === activeTab)?.content}
       </div>
     </div>

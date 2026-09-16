@@ -563,24 +563,50 @@ export const projects = [
       },
     ]
   },
-  // {
-  //   id: 2,
-  //   title: "Liverpool Analysis Dashboard",
-  //   layoutType: "dashboard",
-  //   description: "Interactive performance analysis dashboard.",
-  //   techStack: ["#"],
-  //   github: "#",
-  //   live: "#",
-  //   dashboardData: {
-  //     kpis: [
-  //       { label: "Expected Goals (xG)", value: "2.14 / match" },
-  //       { label: "Win Rate", value: "68.4%" },
-  //       { label: "High Press Success", value: "41.2%" }
-  //     ],
-  //     tabs: [
-  //       { id: "attack", label: "Attacking Metrics", content: "Interactive xG breakdown chart here." },
-  //       { id: "defense", label: "Defensive Pressing", content: "Heatmap visualization components here." }
-  //     ]
-  //   }
-  // }
+   {
+     id: 2,
+     title: "Liverpool Analysis Dashboard (WIP)",
+     layoutType: "linear",
+     description: "Interactive performance analysis dashboard.",
+     techStack: ["Data Analysis & Visualization"],
+     github: "#",
+     live: "#",
+     stages: [
+      //  {
+      //    id: "overview",
+      //    title: "1. Analysis Overview",
+      //    content: [
+      //      { type: "bold", text: "Objective: " },
+      //      { text: "Review Liverpool's attacking output, defensive pressing, and match performance through an interactive analysis dashboard." }
+      //    ]
+      //  },
+      //  {
+      //    id: "attacking-metrics",
+      //    title: "2. Attacking Metrics",
+      //    content: [
+      //      { type: "bold", text: "Expected goals: " },
+      //      { text: "Compare chance quality and attacking output across matches to identify the strongest attacking patterns." }
+      //    ]
+      //  },
+      //  {
+      //    id: "defensive-pressing",
+      //    title: "3. Defensive Pressing",
+      //    content: [
+      //      { type: "bold", text: "Pressing performance: " },
+      //      { text: "Use pressing success and defensive activity to understand how effectively Liverpool regains possession." }
+      //    ]
+      //  }
+     ],
+     dashboardData: {
+       kpis: [
+        //  { label: "Expected Goals (xG)", value: "2.14 / match" },
+        //  { label: "Win Rate", value: "68.4%" },
+        //  { label: "High Press Success", value: "41.2%" }
+       ],
+       tabs: [
+        //  { id: "attack", label: "Attacking Metrics", content: "Interactive xG breakdown chart here." },
+        //  { id: "defense", label: "Defensive Pressing", content: "Heatmap visualization components here." }
+       ]
+     }
+   }
 ];

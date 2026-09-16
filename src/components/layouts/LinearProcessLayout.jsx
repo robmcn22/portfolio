@@ -6,7 +6,7 @@ export default function LinearProcessLayout({ stages }) {
   const renderContent = (content) => {
     if (Array.isArray(content)) {
       return (
-        <div className="text-gray-700 leading-relaxed text-lg mb-4">
+        <div className="text-gray-700 leading-relaxed text-base md:text-lg mb-4">
           {content.map((part, index) => {
             if (part.type === "bold") {
               return (
@@ -36,7 +36,7 @@ export default function LinearProcessLayout({ stages }) {
       );
     }
 
-    return <p className="text-gray-700 leading-relaxed text-lg mb-4">{content}</p>;
+    return <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-4">{content}</p>;
   };
 
   useEffect(() => {
@@ -60,10 +60,10 @@ export default function LinearProcessLayout({ stages }) {
   }, [stages]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-10 w-full">
+    <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full">
       {/* Interactive Sidebar */}
       <aside className="w-full md:w-64 shrink-0">
-        <div className="sticky top-24">
+        <div className="md:sticky md:top-24">
           <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">
             Process Stages
           </h3>
@@ -87,7 +87,7 @@ export default function LinearProcessLayout({ stages }) {
       </aside>
 
       {/* Article / Step-by-Step Content */}
-      <main className="grow max-w-5xl bg-white p-8 md:p-10 rounded-xl shadow-sm border border-gray-100 space-y-16">
+      <main className="grow max-w-5xl bg-white p-4 md:p-10 rounded-xl shadow-sm border border-gray-100 space-y-10 md:space-y-16">
         {stages.map((stage) => {
           const blocks = stage.blocks ?? [
             ...(stage.content || stage.images ? [{ type: "text", content: stage.content }] : []),
@@ -95,8 +95,8 @@ export default function LinearProcessLayout({ stages }) {
           ];
 
           return (
-            <section id={stage.id} key={stage.id} className="scroll-mt-24 mb-20">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
+            <section id={stage.id} key={stage.id} className="scroll-mt-24 mb-14 md:mb-20">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
                 {stage.title}
               </h2>
 

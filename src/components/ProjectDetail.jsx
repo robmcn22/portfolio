@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useSearchParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { projects } from "../data/projectsData";
 import LinearProcessLayout from "./layouts/LinearProcessLayout";
@@ -7,7 +7,9 @@ import DashboardLayout from "./layouts/DashboardLayout";
 
 export default function ProjectDetail() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
   const project = projects.find((p) => p.id === parseInt(id));
+  const isDashboardView = searchParams.get("view") === "dashboard";
 
   if (!project)
     return <div className="p-20 text-center text-2xl">Project not found</div>;
@@ -15,9 +17,10 @@ export default function ProjectDetail() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Shared Header */}
-      <nav className="sticky top-0 z-20 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm">
+      <nav className="sticky top-0 z-20 bg-white border-b border-gray-200 px-4 md:px-6 py-3 md:py-4 flex justify-between items-center shadow-sm">
         <Link
           to="/"
+          state={{ preserveScroll: true }}
           className="flex items-center text-gray-600 hover:text-blue-600 font-medium transition-colors"
         >
           <ArrowLeft size={20} className="mr-2" /> Back to Portfolio
@@ -34,10 +37,10 @@ export default function ProjectDetail() {
         </a>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-6 py-12 w-full grow">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full grow">
         {/* Title & Badges */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {project.title}
           </h1>
           <div className="flex flex-wrap gap-2">
@@ -53,11 +56,11 @@ export default function ProjectDetail() {
         </div>
 
         {/* Dynamic Layout Router */}
-        {project.layoutType === "linear" && (
+        {project.layoutType === "linear" && !isDashboardView && (
           <LinearProcessLayout stages={project.stages} />
         )}
 
-        {project.layoutType === "dashboard" && (
+        {project.dashboardData && isDashboardView && (
           <DashboardLayout dashboardData={project.dashboardData} />
         )}
       </div>
