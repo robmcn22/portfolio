@@ -60,7 +60,7 @@ export const projects = [
     layoutType: "linear",
     description: "Predictive model forecasting survival outcomes for passengers on the Titanic.",
     techStack: ["Python", "Pandas", "Machine Learning"],
-    github: "https://github.com/robmcn22/portfolio",
+    github: "https://github.com/robmcn22/portfolio/titanic-kaggle",
     live: "https://github.com/robmcn22/portfolio/blob/main/titanic-kaggle/titanic.ipynb",
     stages: [
       { 
@@ -569,8 +569,8 @@ export const projects = [
      layoutType: "linear",
      description: "Interactive performance analysis dashboard.",
      techStack: ["Data Analysis & Visualization"],
-     github: "#",
-     live: "#",
+     github: "https://github.com/robmcn22/portfolio/liverpool",
+     live: "https://github.com/robmcn22/portfolio/blob/main/liverpool/liverpool.ipynb",
      stages: [
       //  {
       //    id: "overview",
