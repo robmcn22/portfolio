@@ -569,33 +569,17 @@ export const projects = [
      layoutType: "linear",
      description: "Interactive performance analysis dashboard.",
      techStack: ["Data Analysis & Visualization"],
-     github: "https://github.com/robmcn22/portfolio/liverpool",
+     github: "https://github.com/robmcn22/portfolio/tree/main/liverpool",
      live: "https://github.com/robmcn22/portfolio/blob/main/liverpool/liverpool.ipynb",
      stages: [
-      //  {
-      //    id: "overview",
-      //    title: "1. Analysis Overview",
-      //    content: [
-      //      { type: "bold", text: "Objective: " },
-      //      { text: "Review Liverpool's attacking output, defensive pressing, and match performance through an interactive analysis dashboard." }
-      //    ]
-      //  },
-      //  {
-      //    id: "attacking-metrics",
-      //    title: "2. Attacking Metrics",
-      //    content: [
-      //      { type: "bold", text: "Expected goals: " },
-      //      { text: "Compare chance quality and attacking output across matches to identify the strongest attacking patterns." }
-      //    ]
-      //  },
-      //  {
-      //    id: "defensive-pressing",
-      //    title: "3. Defensive Pressing",
-      //    content: [
-      //      { type: "bold", text: "Pressing performance: " },
-      //      { text: "Use pressing success and defensive activity to understand how effectively Liverpool regains possession." }
-      //    ]
-      //  }
+        {
+          id: "goal",
+          title: "1. Project Goal",
+          content: [
+            { type: "bold", text: "Objective: " },
+            { text: "Use statistical analysis to compare Liverpool's performance between their winning season in 24-25 and in the following season in which they underperformed." }
+          ]
+        }
      ],
      dashboardData: {
        kpis: [
