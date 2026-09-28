@@ -1,3 +1,4 @@
+import { createElement as h } from "react";
 import tutorialScore from "../assets/1.1 tutorialScore.PNG";
 import tutorialModel from "../assets/1.2 tutorialModel.PNG";
 import originalHead from "../assets/2.1 originalHead.PNG";
@@ -52,6 +53,35 @@ import improvedXGParams from "../assets/10.1 xgbParams.PNG";
 import improvedXGGrid from "../assets/10.2 xgbGrid.PNG";
 import improvedXGBest from "../assets/10.3 bestXbg.PNG";
 import improvedXGScore from "../assets/10.4 score.PNG";
+
+const comparisonTable = (rows) =>
+  h("div", { className: "overflow-x-auto" },
+    h("table", { className: "w-full min-w-[520px] text-left text-sm" },
+      h("thead", { className: "border-b border-gray-200 text-xs uppercase text-gray-500" },
+        h("tr", null,
+          h("th", { className: "px-3 py-3 font-semibold" }, "Metric"),
+          h("th", { className: "px-3 py-3 font-semibold" }, "2024-25"),
+          h("th", { className: "px-3 py-3 font-semibold" }, "2025-26"),
+        ),
+      ),
+      h("tbody", { className: "divide-y divide-gray-100" },
+        rows.map(([label, firstSeason, secondSeason]) =>
+          h("tr", { key: label },
+            h("th", { scope: "row", className: "px-3 py-3 font-medium text-gray-700" }, label),
+            h("td", { className: "px-3 py-3 tabular-nums text-gray-700" }, firstSeason),
+            h("td", { className: "px-3 py-3 tabular-nums text-gray-700" }, secondSeason),
+          ),
+        ),
+      ),
+    ),
+  );
+
+const dashboardSection = (summary, rows, note) =>
+  h("div", { className: "space-y-6" },
+    h("p", { className: "max-w-4xl leading-relaxed text-gray-700" }, summary),
+    comparisonTable(rows),
+    note ? h("p", { className: "text-sm text-gray-500" }, note) : null,
+  );
 
 export const projects = [
   {
@@ -565,31 +595,162 @@ export const projects = [
   },
    {
      id: 2,
-     title: "Liverpool Analysis Dashboard (WIP)",
+    title: "Liverpool: 2024-25 vs 2025-26",
      layoutType: "linear",
-     description: "Interactive performance analysis dashboard.",
-     techStack: ["Data Analysis & Visualization"],
+    description: "A 38-match Premier League comparison of Liverpool's title-winning and follow-up seasons.",
+    techStack: ["Python", "Pandas", "Data Analysis"],
      github: "https://github.com/robmcn22/portfolio/tree/main/liverpool",
      live: "https://github.com/robmcn22/portfolio/blob/main/liverpool/liverpool.ipynb",
      stages: [
         {
           id: "goal",
-          title: "1. Project Goal",
+          title: "1. Question & scope",
           content: [
             { type: "bold", text: "Objective: " },
-            { text: "Use statistical analysis to compare Liverpool's performance between their winning season in 24-25 and in the following season in which they underperformed." }
+            { text: "Compare Liverpool's 2024-25 title-winning Premier League season with 2025-26 to identify what changed alongside the fall in results. The analysis covers all 38 league fixtures in each season and focuses on results, shooting, defensive activity, possession, and discipline." }
+          ]
+        },
+        {
+          id: "data",
+          title: "2. Data & perspective",
+          content: [
+            { type: "bold", text: "Sources: " },
+            { text: "Seven match-level tables per season: scores and fixtures, shooting for/against, keeping for/against, and misc for/against. The .xls were exported from fbref and were read as HTML tables into pandas dataframes." },
+            { type: "break" },
+            { type: "bold", text: "Reading the paired tables: " },
+            { text: "The comparison checks dates and opponent names across both perspectives and the fixture table before calculating per-match rates." }
+          ]
+        },
+        {
+          id: "method",
+          title: "3. Method & validation",
+          content: [
+            { type: "list", items: [
+              "Use the 38 fixture rows for match results, goals, possession, and clean sheets.",
+              "Exclude aggregate footer rows from shooting tables by keeping rows with a match date.",
+              "Aggregate misc stats from matched fixture rows, keeping Liverpool and opponent values distinct; zero-impute missing offsides.",
+              "Compare season totals and per-match rates; split activity summaries into wins and matches where points were dropped."
+            ] },
+            { type: "break" },
+            { type: "bold", text: "Goal totals: " },
+            { text: "Fixture goals are kept separate from goals credited in the shooting tables because own-goal attribution can make those counts differ." }
+          ]
+        },
+        {
+          id: "findings",
+          title: "4. What changed",
+          content: [
+            { type: "list", items: [
+              "Results declined from 84 points (25-9-4) to 60 (17-9-12); goal difference fell from +45 to +10.",
+              "Shots on target fell 24%, from 231 to 175, and their share of shots dropped from 35.7% to 29.8%.",
+              "Liverpool's tackles won decreased from 10.50 to 8.08 per match and interceptions from 7.71 to 6.58; opponents' interceptions rose from 8.16 to 9.08.",
+              "Liverpool recorded more crosses and offsides despite fewer shots. In 2025-26, crosses averaged 23.29 in matches where points were dropped versus 16.06 in wins.",
+              "Liverpool's penalties scored/attempted fell from 9/9 to 1/2; opponents rose from 1/2 to 3/4. Liverpool's keeper faced 2 then 4 penalties, saving 1 in each season.",
+              "Liverpool fouls and yellow cards decreased, while average possession edged up from 58.1% to 59.3%."
+            ] }
+          ]
+        },
+        {
+          id: "caveats",
+          title: "5. Caveats",
+          content: [
+            { text: "The workbooks contain no expected-goals data, and many other advanced metrics that can help identify tactical underlying causes rather than purely statistical ones."}
+          ]
+        },
+        {
+          id: "takeaways",
+          title: "5. Takeaways",
+          content: [
+            { text: "Arne Slot prioritized possession, but the team experiencing less efficient chance creation and giving up significantly more counter attacks in 25-26 are the main reasons behind the poorer results." }
           ]
         }
      ],
      dashboardData: {
        kpis: [
-        //  { label: "Expected Goals (xG)", value: "2.14 / match" },
-        //  { label: "Win Rate", value: "68.4%" },
-        //  { label: "High Press Success", value: "41.2%" }
+         { label: "League points · 24-25 → 25-26", value: "84 → 60" },
+         { label: "Goal difference · 24-25 → 25-26", value: "+45 → +10" },
+         { label: "Shots on target / match", value: "6.1 → 4.6" },
        ],
        tabs: [
-        //  { id: "attack", label: "Attacking Metrics", content: "Interactive xG breakdown chart here." },
-        //  { id: "defense", label: "Defensive Pressing", content: "Heatmap visualization components here." }
+         {
+           id: "season",
+           label: "Season summary",
+           content: dashboardSection(
+             "Liverpool earned 24 fewer points in 2025-26. The title-winning season's 25 wins became 17, while losses rose from 4 to 12. Goal difference fell by 35, from +45 to +10.",
+             [
+               ["League record (W-D-L)", "25-9-4", "17-9-12"],
+               ["Points", "84", "60"],
+               ["Points per match", "2.21", "1.58"],
+               ["Goals for", "86", "63"],
+               ["Goals against", "41", "53"],
+               ["Goal difference", "+45", "+10"],
+             ],
+             "Scope: 38 Premier League fixtures in each season."
+           ),
+         },
+         {
+           id: "attack",
+           label: "Attacking",
+           content: dashboardSection(
+             "Shot volume declined by 9%, but shots on target fell by 24%. The share of shots on target dropped 5.9 percentage points, alongside a lower shot conversion rate.",
+             [
+               ["Goals scored", "86", "63"],
+               ["Goals per match", "2.26", "1.66"],
+               ["Shots", "647", "588"],
+               ["Shots per match", "17.0", "15.5"],
+               ["Shots on target", "231", "175"],
+               ["Shots on target per match", "6.1", "4.6"],
+               ["Shots on target share", "35.7%", "29.8%"],
+               ["Shot conversion", "13.1%", "10.4%"],
+             ],
+             "Shot conversion uses goals credited in the shooting tables divided by total shots. Fixture goals are shown separately because own-goal attribution can make the totals differ.",
+           ),
+         },
+         {
+           id: "defence",
+           label: "Defence & possession",
+           content: dashboardSection(
+             "Liverpool conceded 12 more goals and allowed 48 more shots. Average possession increased by 1.2 percentage points, so the weaker results coincided with less efficient chance creation and a higher defensive workload, not a loss of possession.",
+             [
+               ["Goals against", "41", "53"],
+               ["Goals against per match", "1.08", "1.39"],
+               ["Opposition shots", "387", "435"],
+               ["Opposition shots per match", "10.2", "11.4"],
+               ["Opposition shots on target", "141", "153"],
+               ["Opposition shots on target per match", "3.7", "4.0"],
+               ["Clean sheets", "14", "10"],
+               ["Average possession", "58.1%", "59.3%"],
+             ],
+           ),
+         },
+         {
+           id: "activity",
+           label: "Activity & discipline",
+           content: dashboardSection(
+             "The paired misc tables show fewer Liverpool tackles won and interceptions in 2025-26, while opponents recorded more interceptions. Liverpool crossed slightly more often and were flagged offside more often despite taking fewer shots. Fouls committed and yellow cards fell, so the data do not support rising indiscipline as an explanation for the poorer results.",
+             [
+               ["Liverpool fouls committed / match", "11.32", "10.11"],
+               ["Liverpool fouls drawn / match", "9.45", "10.18"],
+               ["Opponent fouls committed / match", "9.76", "10.63"],
+               ["Liverpool yellow cards / match", "1.76", "1.50"],
+               ["Opponent yellow cards / match", "2.21", "2.13"],
+               ["Liverpool penalties scored / attempts", "9 / 9", "1 / 2"],
+               ["Liverpool penalty conversion", "100%", "50%"],
+               ["Opponents penalties scored / attempts", "1 / 2", "3 / 4"],
+               ["Opponent penalty conversion", "50%", "75%"],
+               ["Liverpool keeper penalties faced", "2", "4"],
+               ["Liverpool keeper penalties conceded", "1", "3"],
+               ["Liverpool keeper penalties saved", "1", "1"],
+               ["Liverpool keeper penalties missed", "0", "0"],
+               ["Liverpool crosses / match", "19.08", "20.05"],
+               ["Liverpool offsides / match", "1.58", "2.00"],
+               ["Liverpool interceptions / match", "7.71", "6.58"],
+               ["Opponent interceptions / match", "8.16", "9.08"],
+               ["Liverpool tackles won / match", "10.50", "8.08"],
+               ["Opponent tackles won / match", "10.45", "9.84"],
+             ],
+           ),
+         },
        ]
      }
    }
